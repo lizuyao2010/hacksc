@@ -11,7 +11,7 @@ class Student(models.Model):
     )
     gender = models.CharField(max_length = 1, choices = GENDER,default=True)
     YEAR_IN_SCHOOL_CHOICES = (
-        ('UN','UnderGraduate')
+        ('UN','UnderGraduate'),
         ('GR', 'Graduate'),
     )
     year_in_school = models.CharField(max_length = 2, choices = YEAR_IN_SCHOOL_CHOICES,default=True)
@@ -39,7 +39,7 @@ class Course(models.Model):
     # students=models.ManyToManyField(Student)
 
 class Student_Course(models.Model):
-    student_id = models.CharField(max_length=30,primary_key=True,default=True, primary_key = True)
-    course_id = models.CharField(max_length=30,default=True, primary_key = True)
+    student_id = models.CharField(max_length=30,default="123")
+    course_id = models.CharField(max_length=30,default="123")
 
 
