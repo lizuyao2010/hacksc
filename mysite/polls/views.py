@@ -23,7 +23,6 @@ def lexusadduser(request):
 def stuInfo(request, student_id):
     stu_cou = get_object_or_404(Student_Course, pk=student_id)
     stu = get_object_or_404(Student, pk=student_id)
-
     cou_id_list = []
     for s_c in stu_cou:
         cou_id_list.append(s_c.course_id)
