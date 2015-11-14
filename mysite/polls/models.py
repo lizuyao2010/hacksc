@@ -51,8 +51,8 @@ class Question(models.Model):
     content = models.CharField(max_length=1024,default=True)
 
 class Answer(models.Model):
-    answer_id=models.CharField(max_length=30,default=True)
-    answerer_id=models.CharField(max_length=30,default=True)
-    question_id=models.CharField(max_length=30,default=True)
-    content=models.CharField(max_length=MAX_CONTENT_SIZE,default=True)
-    answer_time=models.TimeField(default=True)
+    answer_id=models.CharField(max_length=30,default=True)
+    answerer_id=models.CharField(max_length=30,default=True)
+    question_id=models.CharField(max_length=30,default=True)
+    content=models.CharField(max_length=1024,default=True)
+    answer_time=models.TimeField(default=True)
