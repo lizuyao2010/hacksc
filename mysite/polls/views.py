@@ -5,7 +5,7 @@ from .models import Student
 from .models import Course
 
 def stuOfACourse(request, course_id):
-    course = get_object_or_404(Course, pk=course_id)
+    course = get_object_or_404(course_stu, pk=course_id)
 
 	student_list = course.students
 	context = {'student_list': student_list}
