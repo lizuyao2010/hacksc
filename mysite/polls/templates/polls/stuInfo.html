@@ -1,0 +1,9 @@
+<ul>
+	<li>{{student_info.student_id}}</li>
+	<li>{{student_info.first_name}}&amp;{{student_info.last_name}}</li>
+	<li><ul>
+		{% for course in course_list %}
+		    <li>{{course.course_id}}{{course.course_name}}</li>
+		{% endfor %}
+	</ul></li>
+</ul>
