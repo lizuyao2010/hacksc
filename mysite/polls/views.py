@@ -3,6 +3,22 @@ from django.shortcuts import render
 # Create your views here.
 from .models import Student
 from .models import Course
+from forms import UserForm
+from django.contrib.auth import login
+from django.http import HttpResponseRedirect
+
+def lexusadduser(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User.objects.create_user(**form.cleaned_data)
+            login(new_user)
+            # redirect, or however you want to get to the main view
+            return HttpResponseRedirect('main.html')
+    else:
+        form = UserForm() 
+
+    return render(request, 'adduser.html', {'form': form}) 
 
 def stuInfo(request, student_id):
     stu_cou = get_object_or_404(Student_Course, pk=student_id)
