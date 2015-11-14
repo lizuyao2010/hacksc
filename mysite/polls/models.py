@@ -41,4 +41,8 @@ class Course(models.Model):
     credits=models.FloatField(default=True)
     students=models.ManyToManyField(Student)
 
+class Student_Course(models.Model):
+    student_id = models.CharField(max_length=30,primary_key=True,default=True, primary_key = True)
+    course_id = models.CharField(max_length=30,default=True, primary_key = True)
+
 
