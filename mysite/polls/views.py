@@ -8,6 +8,7 @@ from .models import Student_Course
 from .models import Question
 from .models import Answer
 from forms import QuestionForm
+from forms import AnswerForm
 from django.contrib.auth import login
 from forms import UserForm
 from forms import StudentForm
@@ -100,14 +101,28 @@ def addQuestion(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
-            newQuestion = Question(question_id = form.cleaned_data['question_id'],course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = str(datetime.datetime.now()).split('.')[0])
-            # print form.cleaned_data
+            newQuestion = Question(question_id = form.cleaned_data['question_id'],course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = form.cleaned_data['post_time'])
+            # newQuestion.post_time = str(datetime.datetime.now()).split('.')[0]
             newQuestion.save()
             return HttpResponseRedirect('/admin')
     else:
         form = QuestionForm() 
 
     return render(request, 'polls/addQuestion.html', {'form': form})
+
+def addAnswer(request):
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            print str(datetime.datetime.now()).split('.')[0]
+            newAnswer = Answer(answer_id = form.cleaned_data['answer_id'], question_id = form.cleaned_data['question_id'], answerer_id = form.cleaned_data['answerer_id'], content = form.cleaned_data['content'], answer_time = form.cleaned_data['answer_time'])
+            # newAnswer.answer_time = str(datetime.datetime.now()).split('.')[0]
+            newAnswer.save()
+            return HttpResponseRedirect('/admin')
+    else:
+        form = AnswerForm() 
+
+    return render(request, 'polls/addAnswer.html', {'form': form})
      
 def questionList(request, course_id):
     question_list = get_list_or_404(Question, course_id = course_id)
