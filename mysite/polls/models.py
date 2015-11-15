@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Student(models.Model):
-    user=models.OneToOneField(User,primary_key=True)
+    user=models.OneToOneField(User,primary_key=True,default=None)
     # user_id=models.CharField(max_length=30,primary_key=True,default="007")
     student_id = models.CharField(max_length=30,null=True)
     GENDER = (
