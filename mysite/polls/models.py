@@ -24,11 +24,11 @@ class Course(models.Model):
     # students=models.ManyToManyField(Student)
 
 class Student_Course(models.Model):
-    student_id = models.CharField(max_length=30,default="123")
+    student_id = models.CharField(max_length=30, primary_key=True, default="123")
     course_id = models.CharField(max_length=30,default="123")
 
 class Question(models.Model):
-    question_id = models.CharField(max_length=30,primary_key=True)
+    # question_id = models.CharField(max_length=30,primary_key=True)
     course_id=models.CharField(max_length=30,default=True, null = True)
     student_id = models.CharField(max_length=30,default=True, null = True)
     title = models.CharField(max_length=1024,default=True, null = True)
@@ -37,8 +37,8 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    answer_id=models.CharField(max_length=30,default=True)
+    # answer_id=models.CharField(max_length=30,default=True)
     answerer_id=models.CharField(max_length=30,default=True)
     question_id=models.CharField(max_length=30,default=True)
     content=models.CharField(max_length=1024,default=True)
-    answer_time=models.TimeField(default=True)
+    answer_time=models.CharField(default=True, max_length=1024)

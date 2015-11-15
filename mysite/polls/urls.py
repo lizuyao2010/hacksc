@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^stuInfo/(?P<student_id>[0-9a-z]+)/$', views.stuInfo, name='stuInfo'),
     url(r'^couInfo/(?P<course_id>[0-9a-zA-Z ]+)/$', views.couInfo, name='couInfo'),
     url(r'^addQuestion/$', views.addQuestion, name='addQuestion'),
+    url(r'^addAnswer/$', views.addAnswer, name='addAnswer'),
     url(r'^questionList/(?P<course_id>[0-9a-z]+)/$', views.questionList, name='questionList'),
     url(r'^answerList/(?P<question_id>[0-9a-z]+)/$', views.answerList, name='answerList')
 ]
