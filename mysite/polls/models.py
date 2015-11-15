@@ -23,8 +23,8 @@ class Course(models.Model):
     course_name=models.CharField(max_length=200, null = True)
 
 class Student_Course(models.Model):
-    student_id = models.CharField(max_length=30, default="123", null = True)
-    course_id = models.CharField(max_length=30, default="123", null = True)
+    student_id = models.CharField(max_length=30, default="123")
+    course_id = models.CharField(max_length=30, default="123")
 
 class Question(models.Model):
     # question_id = models.CharField(max_length=30,primary_key=True)
