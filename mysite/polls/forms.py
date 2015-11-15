@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from models import Student
+from models import Student,Course
 from django.forms import ModelForm
 from django import forms
 import datetime
@@ -27,3 +27,9 @@ class StudentForm(ModelForm):
     class Meta:
         model = Student
         fields=('user','student_id','gender','year_in_school','major')
+
+class CourseForm(ModelForm):
+    """docstring for StudentForm"""
+    class Meta:
+        model = Course
+        fields=('course_id','course_name')

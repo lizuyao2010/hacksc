@@ -19,8 +19,9 @@ class Student(models.Model):
     major = models.CharField(max_length = 20,null=True)
 
 class Course(models.Model):
-    course_id=models.CharField(max_length=30,primary_key=True,default=True)
-    course_name=models.CharField(max_length=200,default=True, null = True)
+    course_id=models.CharField(max_length=30,primary_key=True,default=None)
+    course_name=models.CharField(max_length=200, null = True)
+    # students=models.ManyToManyField(Student)
 
 class Student_Course(models.Model):
     student_id = models.CharField(max_length=30, primary_key=True, default="123")

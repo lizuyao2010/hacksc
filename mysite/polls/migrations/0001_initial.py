@@ -25,8 +25,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Course',
             fields=[
-                ('course_id', models.CharField(default=True, max_length=30, serialize=False, primary_key=True)),
-                ('course_name', models.CharField(default=True, max_length=200, null=True)),
+                ('course_id', models.CharField(default=None, max_length=30, serialize=False, primary_key=True)),
+                ('course_name', models.CharField(max_length=200, null=True)),
             ],
         ),
         migrations.CreateModel(
@@ -56,5 +56,10 @@ class Migration(migrations.Migration):
                 ('student_id', models.CharField(default=b'123', max_length=30, serialize=False, primary_key=True)),
                 ('course_id', models.CharField(default=b'123', max_length=30)),
             ],
+        ),
+        migrations.AddField(
+            model_name='course',
+            name='students',
+            field=models.ManyToManyField(to='polls.Student'),
         ),
     ]
