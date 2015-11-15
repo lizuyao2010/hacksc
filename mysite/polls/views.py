@@ -7,11 +7,12 @@ from .models import Course
 from .models import Student_Course
 from .models import Question
 from .models import Answer
-from forms import UserForm
+from forms import *
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
+import datetime
 def main(request):
     return render(request,'polls/main.html',{})
 
@@ -59,3 +60,16 @@ def couInfo(request, course_id):
         student_list.append(student)
     context = {'student_list': student_list, 'cou_info': cou}
     return render(request, 'polls/couInfo.html', context)
+
+def addQuestion(request):
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            newQuestion = Question(course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = str(datetime.datetime.now()).split('.')[0])
+            # print form.cleaned_data
+            newQuestion.save()
+            return HttpResponseRedirect('/admin')
+    else:
+        form = QuestionForm() 
+
+    return render(request, 'polls/addQuestion.html', {'form': form}) 

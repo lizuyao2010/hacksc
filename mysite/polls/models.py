@@ -43,12 +43,12 @@ class Student_Course(models.Model):
     course_id = models.CharField(max_length=30,default="123")
 
 class Question(models.Model):
-    question_id = models.CharField(max_length=30,primary_key=True,default=True)
-    course_id=models.CharField(max_length=30,default=True)
-    student_id = models.CharField(max_length=30,default=True)
-    title = models.CharField(max_length=1024,default=True)
-    post_time=models.TimeField(default=True)
-    content = models.CharField(max_length=1024,default=True)
+    # question_id = models.CharField(max_length=30,primary_key=True,default=True)
+    course_id=models.CharField(max_length=30,default=True, null = True)
+    student_id = models.CharField(max_length=30,default=True, null = True)
+    title = models.CharField(max_length=1024,default=True, null = True)
+    post_time=models.CharField(max_length=1024,default=True, null = True)
+    content = models.CharField(max_length=1024,default=True, null = True)
 
 class Answer(models.Model):
     answer_id=models.CharField(max_length=30,default=True)

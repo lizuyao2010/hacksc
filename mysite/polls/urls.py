@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^main/$', views.main, name='main'),
     url(r'^stuInfo/(?P<student_id>[0-9a-z]+)/$', views.stuInfo, name='stuInfo'),
     url(r'^couInfo/(?P<course_id>[0-9a-z]+)/$', views.couInfo, name='couInfo'),
+    url(r'^addQuestion/$', views.addQuestion, name='addQuestion'),
 ]
