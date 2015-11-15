@@ -102,8 +102,8 @@ def addQuestion(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
-            newQuestion = Question(question_id = form.cleaned_data['question_id'],course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = form.cleaned_data['post_time'])
-            # newQuestion.post_time = str(datetime.datetime.now()).split('.')[0]
+            newQuestion = Question(course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'])
+            newQuestion.post_time = str(datetime.datetime.now()).split('.')[0]
             newQuestion.save()
             return HttpResponseRedirect('/admin')
     else:
@@ -116,8 +116,8 @@ def addAnswer(request):
         form = AnswerForm(request.POST)
         if form.is_valid():
             print str(datetime.datetime.now()).split('.')[0]
-            newAnswer = Answer(answer_id = form.cleaned_data['answer_id'], question_id = form.cleaned_data['question_id'], answerer_id = form.cleaned_data['answerer_id'], content = form.cleaned_data['content'], answer_time = form.cleaned_data['answer_time'])
-            # newAnswer.answer_time = str(datetime.datetime.now()).split('.')[0]
+            newAnswer = Answer( question_id = form.cleaned_data['question_id'], answerer_id = form.cleaned_data['answerer_id'], content = form.cleaned_data['content'])
+            newAnswer.answer_time = str(datetime.datetime.now()).split('.')[0]
             newAnswer.save()
             return HttpResponseRedirect('/admin')
     else:

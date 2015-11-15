@@ -14,14 +14,14 @@ class QuestionForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea)
     course_id = forms.CharField(max_length=100)
     student_id = forms.CharField(max_length=100)
-    question_id = forms.CharField(max_length=100)
-    post_time = forms.CharField(max_length=100)
+    # question_id = forms.CharField(max_length=100)
+    post_time = 0
 class AnswerForm(forms.Form):
-    answer_id = forms.CharField(max_length=100)
+    # answer_id = forms.CharField(max_length=100)
     content = forms.CharField(widget=forms.Textarea)
     answerer_id = forms.CharField(max_length=100)
     question_id = forms.CharField(max_length=100)
-    answer_time = forms.CharField(max_length=100)
+    answer_time = 0
 class StudentForm(ModelForm):
     """docstring for StudentForm"""
     class Meta:
