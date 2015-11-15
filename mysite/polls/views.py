@@ -58,7 +58,6 @@ def adduser(request):
         if form.is_valid():
             new_user = User.objects.create_user(**form.cleaned_data)
             new_user.save()
-            # login(request,new_user)
             # redirect, or however you want to get to the main view
             return HttpResponseRedirect('/polls/addStudent/')
     else:
@@ -101,14 +100,15 @@ def addQuestion(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
-            newQuestion = Question(course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = str(datetime.datetime.now()).split('.')[0])
+            newQuestion = Question(question_id = form.cleaned_data['question_id'],course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = str(datetime.datetime.now()).split('.')[0])
             # print form.cleaned_data
             newQuestion.save()
             return HttpResponseRedirect('/admin')
     else:
         form = QuestionForm() 
 
-    return render(request, 'polls/addQuestion.html', {'form': form}) 
+    return render(request, 'polls/addQuestion.html', {'form': form})
+     
 def questionList(request, course_id):
     question_list = get_list_or_404(Question, course_id = course_id)
     context = {'question_list': question_list}
