@@ -4,6 +4,6 @@ import views
 
 urlpatterns = [
     url(r'^adduser/$', views.adduser, name='adduser'),
-    url(r'^stuInfo/$', views.stuInfo, name='stuInfo'),
-    url(r'^couInfo/$', views.couInfo, name='couInfo'),
+    url(r'^stuInfo/(?P<student_id>[0-9a-z]+)/$', views.stuInfo, name='stuInfo'),
+    url(r'^couInfo/(?P<course_id>[0-9a-z]+)/$', views.couInfo, name='couInfo'),
 ]
