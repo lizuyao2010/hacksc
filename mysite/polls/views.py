@@ -8,22 +8,58 @@ from .models import Student_Course
 from .models import Question
 from .models import Answer
 from forms import UserForm
-from django.contrib.auth import login
+from forms import StudentForm
+from django.contrib.auth import authenticate,login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
 def main(request):
     return render(request,'polls/main.html',{})
 
+def my_login(request):
+    if request.method == "POST":
+        # form = loginForm(request.POST)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                # Redirect to a success page.
+                return HttpResponseRedirect('/polls/main/')
+            else:
+                # Return a 'disabled account' error message
+                pass
+        else:
+            # Return an 'invalid login' error message.
+            pass
+    else:
+        # form=loginForm()
+        pass
+    return render(request, 'polls/login.html', {})
+
+def addStudent(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            new_student = Student(**form.cleaned_data)
+            new_student.save()
+            # redirect, or however you want to get to the main view
+            return HttpResponseRedirect('/polls/main/')
+    else:
+        form = StudentForm() 
+
+    return render(request, 'polls/addStudent.html', {'form': form})
+
 def adduser(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
             new_user = User.objects.create_user(**form.cleaned_data)
-            # login(request,new_user)
             new_user.save()
+            # login(request,new_user)
             # redirect, or however you want to get to the main view
-            return HttpResponseRedirect('/polls/stuInfo/')
+            return HttpResponseRedirect('/polls/addStudent/')
     else:
         form = UserForm() 
 

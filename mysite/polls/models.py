@@ -1,21 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Student(models.Model):
-    student_id = models.CharField(max_length=30,primary_key=True,default=True)
-    first_name = models.CharField(max_length=30,default=True)
-    last_name = models.CharField(max_length=30,default=True)
+    user=models.OneToOneField(User,primary_key=True)
+    student_id = models.CharField(max_length=30,null=True)
     GENDER = (
         ('F', 'Female'),
         ('M', 'Male'),
     )
-    gender = models.CharField(max_length = 1, choices = GENDER,default=True)
+    gender = models.CharField(max_length = 1, choices = GENDER,null=True)
     YEAR_IN_SCHOOL_CHOICES = (
         ('UN','UnderGraduate'),
         ('GR', 'Graduate'),
     )
-    year_in_school = models.CharField(max_length = 2, choices = YEAR_IN_SCHOOL_CHOICES,default=True)
-    major = models.CharField(max_length = 20,default=True)
+    year_in_school = models.CharField(max_length = 2, choices = YEAR_IN_SCHOOL_CHOICES,null=True)
+    major = models.CharField(max_length = 20,null=True)
 
 class Course(models.Model):
     course_id=models.CharField(max_length=30,primary_key=True,default=True)
