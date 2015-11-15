@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Student(models.Model):
-    user=models.OneToOneField(User,primary_key=True)
+    user=models.OneToOneField(User,primary_key=True,default=None)
+    # user_id=models.CharField(max_length=30,primary_key=True,default="007")
     student_id = models.CharField(max_length=30,null=True)
     GENDER = (
         ('F', 'Female'),
@@ -20,23 +21,6 @@ class Student(models.Model):
 class Course(models.Model):
     course_id=models.CharField(max_length=30,primary_key=True,default=True)
     course_name=models.CharField(max_length=200,default=True, null = True)
-    # course_section=models.CharField(max_length=30,default=True)
-    # COURSE_TYPE=(
-        # ('Le','Lecture'),
-        # ('La','Lab'),
-        # ('Q','Quiz'),   
-    # )
-    # course_type=models.CharField(max_length=2,choices=COURSE_TYPE,default=True)
-    # instructor=models.CharField(max_length=30,default=True)
-    # location=models.CharField(max_length=30,default=True)
-    # capcity=models.IntegerField(default=True)
-    # registered=models.IntegerField(default=True)
-    # start_time=models.TimeField(default=True)
-    # end_time=models.TimeField(default=True)
-    # how to add multiple choices?
-    # days=models.CharField(max_length=30,default=True)
-    # credits=models.FloatField(default=True)
-    # students=models.ManyToManyField(Student)
 
 class Student_Course(models.Model):
     student_id = models.CharField(max_length=30, primary_key=True, default="123")

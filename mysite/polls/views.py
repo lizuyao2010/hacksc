@@ -45,6 +45,7 @@ def addStudent(request):
         form = StudentForm(request.POST)
         if form.is_valid():
             new_student = Student(**form.cleaned_data)
+            # new_user.user_id=request.POST['user_id']
             new_student.save()
             # redirect, or however you want to get to the main view
             return HttpResponseRedirect('/polls/main/')
