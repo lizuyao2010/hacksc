@@ -18,7 +18,6 @@ def main(request):
 
 def my_login(request):
     if request.method == "POST":
-        # form = loginForm(request.POST)
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
@@ -34,7 +33,6 @@ def my_login(request):
             # Return an 'invalid login' error message.
             pass
     else:
-        # form=loginForm()
         pass
     return render(request, 'polls/login.html', {})
 
