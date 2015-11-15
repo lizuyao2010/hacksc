@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 
 # Create your views here.
 from .models import Student
 from .models import Course
-from forms import UserForm
+from .models import Student_Course
+from .models import Question
+from .models import Answer
+# from forms import UserForm
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
