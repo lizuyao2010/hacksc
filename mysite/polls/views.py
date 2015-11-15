@@ -6,19 +6,21 @@ from .models import Course
 from forms import UserForm
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 
 def lexusadduser(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
             new_user = User.objects.create_user(**form.cleaned_data)
-            login(new_user)
+            # login(request,new_user)
+            new_user.save()
             # redirect, or however you want to get to the main view
-            return HttpResponseRedirect('main.html')
+            return HttpResponseRedirect('polls/main.html')
     else:
         form = UserForm() 
 
-    return render(request, 'adduser.html', {'form': form}) 
+    return render(request, 'polls/adduser.html', {'form': form}) 
 
 def stuInfo(request, student_id):
     stu_cou = get_object_or_404(Student_Course, pk=student_id)
