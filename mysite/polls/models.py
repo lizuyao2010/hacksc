@@ -18,8 +18,8 @@ class Student(models.Model):
     major = models.CharField(max_length = 20,default=True)
 
 class Course(models.Model):
-    course_id=models.CharField(max_length=30,default=True)
-    course_name=models.CharField(max_length=30,default=True)
+    course_id=models.CharField(max_length=30,primary_key=True,default=True)
+    course_name=models.CharField(max_length=200,default=True, null = True)
     # course_section=models.CharField(max_length=30,default=True)
     # COURSE_TYPE=(
         # ('Le','Lecture'),
