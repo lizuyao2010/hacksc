@@ -14,6 +14,7 @@ class QuestionForm(forms.Form):
     course_id = forms.CharField(max_length=100)
     student_id = forms.CharField(max_length=100)
     question_id = forms.CharField(max_length=100)
+
 class StudentForm(ModelForm):
     """docstring for StudentForm"""
     class Meta:
