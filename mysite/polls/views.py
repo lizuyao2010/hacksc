@@ -9,8 +9,7 @@ from .models import Question
 from .models import Answer
 from forms import QuestionForm
 from django.contrib.auth import login
-from forms import UserForm
-from forms import StudentForm
+from forms import StudentForm,CourseForm,UserForm
 from django.contrib.auth import authenticate,login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -18,6 +17,19 @@ from django.contrib.auth.models import User
 import datetime
 def main(request):
     return render(request,'polls/main.html',{})
+
+def addcourse(request):
+    if request.method == "POST":
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            new_course = Course(**form.cleaned_data)
+            new_course.save()
+            # redirect, or however you want to get to the main view
+            return HttpResponseRedirect('/polls/main/')
+    else:
+        form = CourseForm() 
+
+    return render(request, 'polls/addcourse.html', {'form': form})    
 
 def my_login(request):
     if request.method == "POST":
