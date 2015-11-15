@@ -8,7 +8,7 @@ from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
-def lexusadduser(request):
+def adduser(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
