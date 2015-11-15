@@ -7,10 +7,13 @@ from .models import Course
 from .models import Student_Course
 from .models import Question
 from .models import Answer
-# from forms import UserForm
+from forms import UserForm
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+
+def main(request):
+    return render(request,'polls/main.html',{})
 
 def adduser(request):
     if request.method == "POST":
@@ -20,7 +23,7 @@ def adduser(request):
             # login(request,new_user)
             new_user.save()
             # redirect, or however you want to get to the main view
-            return HttpResponseRedirect('polls/main.html')
+            return HttpResponseRedirect('/polls/stuInfo/')
     else:
         form = UserForm() 
 

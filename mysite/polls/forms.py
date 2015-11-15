@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-<<<<<<< HEAD
 from django.forms import ModelForm
 class UserForm(ModelForm):
     class Meta:
