@@ -58,7 +58,6 @@ def adduser(request):
         if form.is_valid():
             new_user = User.objects.create_user(**form.cleaned_data)
             new_user.save()
-            # login(request,new_user)
             # redirect, or however you want to get to the main view
             return HttpResponseRedirect('/polls/addStudent/')
     else:
@@ -108,7 +107,8 @@ def addQuestion(request):
     else:
         form = QuestionForm() 
 
-    return render(request, 'polls/addQuestion.html', {'form': form}) 
+    return render(request, 'polls/addQuestion.html', {'form': form})
+     
 def questionList(request, course_id):
     question_list = get_list_or_404(Question, course_id = course_id)
     context = {'question_list': question_list}
