@@ -101,7 +101,7 @@ def addQuestion(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
-            newQuestion = Question(course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = str(datetime.datetime.now()).split('.')[0])
+            newQuestion = Question(question_id = form.cleaned_data['question_id'],course_id = form.cleaned_data['course_id'], student_id = form.cleaned_data['student_id'], title = form.cleaned_data['title'], content = form.cleaned_data['content'], post_time = str(datetime.datetime.now()).split('.')[0])
             # print form.cleaned_data
             newQuestion.save()
             return HttpResponseRedirect('/admin')
