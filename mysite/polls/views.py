@@ -25,8 +25,10 @@ def addcourse(request):
         if form.is_valid():
             new_course = Course(**form.cleaned_data)
             new_course.save()
+            new_student_course=Student_Course(course_id=form.cleaned_data['course_id'],student_id=request.user.id)
+            new_student_course.save()
             # redirect, or however you want to get to the main view
-            return HttpResponseRedirect('/polls/main/')
+            # return HttpResponseRedirect('/polls/main/')
     else:
         form = CourseForm() 
 
